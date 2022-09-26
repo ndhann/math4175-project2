@@ -51,6 +51,7 @@ print("Index of coincidences for m = 8")
 print(i8)
 
 p_freq = [0.082, 0.015, 0.028, 0.043, 0.127, 0.022, 0.020, 0.061, 0.070, 0.002, 0.008, 0.040, 0.024, 0.067, 0.075, 0.019, 0.001, 0.060, 0.063, 0.091, 0.028, 0.010, 0.023, 0.001, 0.020, 0.001]
+key = []
 
 for j in range(7):
     q7 = []
@@ -72,3 +73,15 @@ for j in range(7):
     
     print(maxval)
     print(index)
+    key.append(index)
+
+print(key)
+plaintext = []
+asciibase = 65
+for i in range(len(ciphertext)):
+    temp = ord(ciphertext[i]) - asciibase
+    temp = (temp - (key[i % len(key)])) % 26
+    temp = chr(temp + asciibase)
+    plaintext.append(temp)
+
+print(''.join(plaintext))
